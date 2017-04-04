@@ -2,4 +2,4 @@
 
 
 
-`gcc -Wall -o zadanie1.exe src/zadanie1.c `
+`gcc -Wall -o zadanie-generator.exe src/generator.c `
