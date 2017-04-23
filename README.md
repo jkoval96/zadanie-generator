@@ -1,5 +1,5 @@
-# Zadanie1
+# Zadanie3
+## Nizkourovnove IO
 
-Zahrievacie zadanie
-
-`gcc -Wall -o zadanie1.exe src/zadanie1.c `
+`gcc -Wall -o generator.exe src/generator.c `
+`gcc -Wall -o analyze.exe src/analyze.c `
