@@ -6,13 +6,11 @@
 
 int main(int argc, char* argv[]) {
 	char* filename = argv[1];
-	int file_descriptor;
-	int res, i;
+	int file_descriptor, res, i;
+	unsigned char number;
 	
 	file_descriptor = open(filename, O_RDONLY);
 	while(1) {
-		unsigned char number;
-		
 		res = read(file_descriptor, &number, sizeof(unsigned char));
 		printf("%d", res);
 		printf("\n");
