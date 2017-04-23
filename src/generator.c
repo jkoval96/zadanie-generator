@@ -14,7 +14,7 @@ int main(int argc, char* argv[]) {
 	srand(time(NULL));	
 	file_descriptor = open(filename, O_WRONLY | O_CREAT);
 	
-	for(j =0; j < n; j++) {
+	for(j = 0; j < n; j++) {
 		for(i = 0; i < n; i++) {
 			fields[i] = (float)(rand() /(float)(RAND_MAX)) + 10 + rand() % 10;
 			printf("%lf ", fields[i]);
