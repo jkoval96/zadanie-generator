@@ -6,22 +6,23 @@
 	
 int main(int argc, char* argv[]) {
 	char* filename = argv[1];
-	int i,j;
-	unsigned char n = atoi(argv[2]);
+	int i, j;
+	unsigned char length, n = atoi(argv[2]);
 	float fields[n];
 	int file_descriptor;
 
 	srand(time(NULL));	
-	file_descriptor = open(filename, O_WRONLY | O_CREAT);
+	file_descriptor = open(filename, O_RDWR | O_CREAT);
 	
 	for(j = 0; j < n; j++) {
-		for(i = 0; i < n; i++) {
+		length = rand() % 11 + 10;
+		for(i = 0; i < length; i++) {
 			fields[i] = (float)(rand() /(float)(RAND_MAX)) + 10 + rand() % 10;
 			printf("%lf ", fields[i]);
 		}
 		printf("\n");
-		write(file_descriptor, &n, sizeof(unsigned char));
-		write(file_descriptor, fields, n * sizeof(float));
+		write(file_descriptor, &length, sizeof(unsigned char));
+		write(file_descriptor, fields, length * sizeof(float));
 	}
 	
 	printf("%s %d", filename, n); 
