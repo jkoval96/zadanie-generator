@@ -12,6 +12,7 @@ int main(int argc, char* argv[]) {
 	file_descriptor = open(filename, O_RDONLY);
 	while(1) {
 		unsigned char number;
+		
 		res = read(file_descriptor, &number, sizeof(unsigned char));
 		printf("%d", res);
 		printf("\n");
@@ -20,6 +21,7 @@ int main(int argc, char* argv[]) {
 		} else {
 			float fields[number];
 			int tmp = read(file_descriptor, fields, sizeof(float) * number);
+			
 			for(i = 0; i < number; i++) {
 				printf("%lf ", fields[i]);
 			}
@@ -28,5 +30,7 @@ int main(int argc, char* argv[]) {
 			printf("\n");
 		}
 	}
+	close(file_descriptor);
 	
+	return 0;
 }
