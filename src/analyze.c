@@ -9,7 +9,7 @@ int main(int argc, char* argv[]) {
 	int file_descriptor, i;
 	unsigned char number;
 	ssize_t bytes_read;
-	float g_total, count_average, total, average;
+	float g_total, g_average, total, average;
 	
 	g_total = 0;
 	g_average = 0;
@@ -40,7 +40,7 @@ int main(int argc, char* argv[]) {
 				total += buffer[i];
 			}
 			average = total / number;
-			count_average += average;
+			g_average += average;
 			g_total ++;
 			
 			printf(" Average = %f\n", average);
