@@ -6,25 +6,33 @@
 
 int main(int argc, char* argv[]) {
 	char* filename = argv[1];
-	int file_descriptor, res, i;
+	int file_descriptor, i;
 	unsigned char number;
+	ssize_t bytes_read;
 	
-	file_descriptor = open(filename, O_RDONLY);
-	while(1) {
-		res = read(file_descriptor, &number, sizeof(unsigned char));
-		printf("%d", res);
-		printf("\n");
-		if(res <= 0) {
+	file_descriptor = open(filename, O_RDONLY | O_BINARY);
+	while (1) {
+		bytes_read = read(file_descriptor, &number, sizeof(unsigned char));
+		if (bytes_read <= 0) {
 			return 0;
 		} else {
-			float fields[number];
-			int tmp = read(file_descriptor, fields, sizeof(float) * number);
-			
-			for(i = 0; i < number; i++) {
-				printf("%lf ", fields[i]);
+			float buffer[number];
+			float* buffer_pointer = buffer;
+			ssize_t count = sizeof(float) * number;
+
+			while (count > 0) {
+				bytes_read = read(file_descriptor, buffer_pointer, count);
+				if (bytes_read <= 0) {
+					break;
+				} else {
+					buffer_pointer += bytes_read;
+					count -= bytes_read;
+				}
 			}
-			printf("\n");	
-			printf("%d", tmp);	
+			
+			for (i = 0; i < number; i++) {
+				printf("%f ", buffer[i]);
+			}
 			printf("\n");
 		}
 	}
