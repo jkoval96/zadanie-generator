@@ -12,6 +12,10 @@ int main(int argc, char* argv[]) {
 
 	srand(time(NULL));	
 	n = atoi(argv[2]);
+	if (argc < 3) {
+        printf("ERROR INPUT, usage: %s <filename> <Nrows> \n", argv[0]);
+        exit(1);
+    }
 	file_descriptor = open(filename, O_RDWR | O_CREAT | O_BINARY);
 	
 	for(j = 0; j < n; j++) {

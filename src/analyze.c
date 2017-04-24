@@ -21,19 +21,13 @@ int main(int argc, char* argv[]) {
 			break;
 		} else {
 			float buffer[number];
-			float* buffer_pointer = buffer;
 			ssize_t count = sizeof(float) * number;
 			total = 0; 
 			
-			while (count > 0) {
-				bytes_read = read(file_descriptor, buffer_pointer, count);
-				if (bytes_read <= 0) {
-					break;
-				} else {
-					buffer_pointer += bytes_read;
-					count -= bytes_read;
-				}
-			}
+			bytes_read = read(file_descriptor, buffer, count);
+			if (bytes_read <= 0) {
+				break;
+			} 
 			printf("Count = %d  ", number);
 			for (i = 0; i < number; i++) {
 				printf("%f ", buffer[i]);
