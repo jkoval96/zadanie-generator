@@ -21,13 +21,12 @@ int main(int argc, char* argv[]) {
 		for(i = 0; i < length; i++) {
 			fields[i] = (float)(rand() /(float)(RAND_MAX)) + 10 + rand() % 10;
 		}
-		printf("\n");
 		write(file_descriptor, &length, sizeof(unsigned char));
 		write(file_descriptor, fields, length * sizeof(float));
 	}
 	
-    close(file_descriptor);
+	close(file_descriptor);
     
-    return 0;
+	return 0;
 }
 
