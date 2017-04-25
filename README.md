@@ -15,3 +15,4 @@
 
  * remove `O_BINARY` in method `open` (analyze.c and generator.c)
  * add mode `0666`in method `open` (generator.c)
+
