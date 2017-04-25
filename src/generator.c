@@ -16,6 +16,7 @@ int main(int argc, char* argv[]) {
         printf("ERROR INPUT, usage: %s <filename> <Nrows> \n", argv[0]);
         exit(1);
     }
+    //For Linux users, remove `O_BINARY` in method `open`, add mode `0666`in method `open` 
 	file_descriptor = open(filename, O_RDWR | O_CREAT | O_BINARY);
 	
 	for(j = 0; j < n; j++) {

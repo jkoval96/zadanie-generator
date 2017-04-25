@@ -13,7 +13,7 @@ int main(int argc, char* argv[]) {
 	
 	g_total = 0;
 	g_average = 0;
-	
+	// For Linux users, remove `O_BINARY` in method `open`
 	file_descriptor = open(filename, O_RDONLY | O_BINARY);
 	while(1) {
 		bytes_read = read(file_descriptor, &number, sizeof(unsigned char));
