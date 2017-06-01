@@ -21,17 +21,18 @@ int main(int argc, char* argv[]) {
 	
 	for(j = 0; j < n; j++) {
 		length = rand() % 11 + 10;
-		float fields[length];
+		float *fields;
+		fields = malloc(sizeof(float) * length);
 		
 		for(i = 0; i < length; i++) {
 			fields[i] = (float)(rand() /(float)(RAND_MAX)) + 10 + rand() % 10;
 		}
 		write(file_descriptor, &length, sizeof(unsigned char));
 		write(file_descriptor, fields, length * sizeof(float));
+		free(fields);
 	}
 	
 	close(file_descriptor);
-    
 	return 0;
 }
 

@@ -20,7 +20,8 @@ int main(int argc, char* argv[]) {
 		if (bytes_read <= 0) {
 			break;
 		} else {
-			float buffer[number];
+			float *buffer;
+			buffer = malloc(sizeof(float) * number);
 			ssize_t count = sizeof(float) * number;
 			total = 0; 
 			
@@ -38,6 +39,7 @@ int main(int argc, char* argv[]) {
 			g_total ++;
 			
 			printf(" Average = %f\n", average);
+			free(buffer);
 		}
 	}
 	
